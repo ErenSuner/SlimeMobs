@@ -1,4 +1,4 @@
-[gd_scene load_steps=599 format=3 uid="uid://cfuoyk6d80t05"]
+[gd_scene load_steps=600 format=3 uid="uid://cfuoyk6d80t05"]
 
 [ext_resource type="Script" uid="uid://cjwmd1i3ymk0p" path="res://scenes/game_objects/player/player.gd" id="1_tuuoe"]
 [ext_resource type="Texture2D" uid="uid://3j8u5r1i0e3k" path="res://assets/mobs/Slime1_Death_full.png" id="2_fe5qn"]
@@ -2320,7 +2320,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slime1_attack_down",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -2355,7 +2355,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slime1_attack_left",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -2390,7 +2390,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slime1_attack_right",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -2425,7 +2425,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slime1_attack_up",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -3007,7 +3007,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slime2_attack_down",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -3045,7 +3045,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slime2_attack_left",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -3083,7 +3083,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slime2_attack_right",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -3121,7 +3121,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slime2_attack_up",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -3697,7 +3697,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slime3_attack_down",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -3729,7 +3729,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slime3_attack_left",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -3761,7 +3761,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slime3_attack_right",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -3793,7 +3793,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slime3_attack_up",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -4361,6 +4361,9 @@ radius = 5.5
 [sub_resource type="CircleShape2D" id="CircleShape2D_v2l2k"]
 radius = 8.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gpa6"]
+size = Vector2(50, 30)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 y_sort_enabled = true
@@ -4380,7 +4383,7 @@ one_shot = true
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_fe5qn")
-animation = &"slime1_hurt_down"
+animation = &"slime2_attack_right"
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
@@ -4409,6 +4412,18 @@ collision_mask = 8
 position = Vector2(0, -9)
 shape = SubResource("CircleShape2D_v2l2k")
 
+[node name="HitBoxArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxArea"]
+process_mode = 4
+visible = false
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_8gpa6")
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("inital_state")]
 script = ExtResource("17_i6po3")
 inital_state = NodePath("Idle")
@@ -4428,3 +4443,5 @@ script = ExtResource("26_n8mxd")
 
 [node name="Dead" type="Node" parent="StateMachine"]
 script = ExtResource("21_d2mjs")
+
+[connection signal="area_entered" from="HitBoxArea" to="." method="_on_hit_box_area_area_entered"]

@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 @onready var state_machine: Node = $StateMachine
 @onready var animated_sprite: AnimatedSprite2D = $Sprite2D
-@onready var hurt_box_area: Area2D = $HurtBoxArea
+@onready var hurt_box_area: Area2D = %HurtBoxArea
+@onready var hit_box_area: Area2D = %HitBoxArea
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var damage_cooldown_timer: Timer = $DamageIntervalTimer
 @onready var health_bar: ProgressBar = $HealthBar
@@ -59,3 +60,9 @@ func _on_died() -> void:
 
 func on_damage_cooldown_timer_timeout():
 	can_take_damage = true
+
+
+func _on_hit_box_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("hurtbox"):
+		if area.owner.has_method("take_damage"):
+			area.owner.take_damage(10)

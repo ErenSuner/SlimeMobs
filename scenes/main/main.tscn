@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://df31pvkjssjwi"]
+[gd_scene load_steps=24 format=4 uid="uid://df31pvkjssjwi"]
 
 [ext_resource type="PackedScene" uid="uid://cfuoyk6d80t05" path="res://scenes/game_objects/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="Texture2D" uid="uid://blfrrk1e0a6rv" path="res://assets/peaceful_plain_set/peaceful_plains_decors.png" id="2_a8run"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bp8wmr1ce2be8" path="res://assets/objects/cactus/Cactus2_1.png" id="5_blune"]
 [ext_resource type="Texture2D" uid="uid://cilu0aa4co5wu" path="res://assets/objects/cactus/Cactus2_2.png" id="6_th5th"]
 [ext_resource type="Texture2D" uid="uid://ds7s21xulfqvt" path="res://assets/objects/cactus/Cactus2_3.png" id="7_7smn1"]
+[ext_resource type="PackedScene" uid="uid://colod1i75s225" path="res://scenes/game_objects/enemies/basic_enemy.tscn" id="10_ouso4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iuonh"]
 texture = ExtResource("2_k2fmo")
@@ -778,5 +779,7 @@ tile_map_data = PackedByteArray("AAACAAIAAQAAAAAAAAAEAAYAAwABAAEAAAAFAAEABAAAAAA
 tile_set = SubResource("TileSet_pg34l")
 
 [node name="Player" parent="YSortingContainer" instance=ExtResource("1_hyk8p")]
+
+[node name="BasicEnemy" parent="YSortingContainer" instance=ExtResource("10_ouso4")]
 
 [node name="Camera2D" parent="." instance=ExtResource("3_k2fmo")]

@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://colod1i75s225"]
+
+[ext_resource type="PackedScene" uid="uid://deq071tr5xvmn" path="res://scenes/components/health_component.tscn" id="1_jqidj"]
+[ext_resource type="Script" uid="uid://b18ejsvenvsii" path="res://scenes/game_objects/enemies/basic_enemy.gd" id="1_v6cli"]
+[ext_resource type="Texture2D" uid="uid://c0ep24cpxcyx1" path="res://assets/enemies/tile_0084.png" id="2_v6cli"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8suy"]
+bg_color = Color(0.14902, 0.270588, 0.278431, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ns1k"]
+bg_color = Color(0.388235, 0.788235, 0.623529, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.14902, 0.270588, 0.278431, 1)
+
+[sub_resource type="Theme" id="Theme_v6cli"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_g8suy")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_1ns1k")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q32lc"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ty4r"]
+radius = 12.0
+
+[node name="BasicEnemy" type="CharacterBody2D"]
+z_index = 1
+script = ExtResource("1_v6cli")
+
+[node name="HealthComponent" parent="." instance=ExtResource("1_jqidj")]
+
+[node name="DamageDelayTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_v6cli")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+z_index = 1
+offset_left = -14.0
+offset_top = -25.0
+offset_right = 14.0
+offset_bottom = -19.0
+theme = SubResource("Theme_v6cli")
+value = 50.0
+show_percentage = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_q32lc")
+
+[node name="HurtBoxArea" type="Area2D" parent="." groups=["hurtbox"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_1ty4r")
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
+[connection signal="timeout" from="DamageDelayTimer" to="." method="_on_damage_delay_timer_timeout"]
