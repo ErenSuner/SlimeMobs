@@ -560,16 +560,16 @@ texture = ExtResource("2_a8run")
 0:8/0 = 0
 0:8/0/terrain_set = 0
 0:8/0/terrain = 0
-0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.0576, -8, 3.23746, -8, 3.23746, -3.77703, 8, -3.77703, 8, 3.95689, 3.23746, 3.77703, 3.0576, 8, -2.87774, 8)
+0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9483, -8, 8, -8, 8, 4.05392, 3.31684, 3.93107, 2.9483, 8, -2.9483, 8)
 0:8/0/terrains_peering_bit/right_side = 0
 0:8/0/terrains_peering_bit/bottom_side = 0
 1:8/0 = 0
 1:8/0/terrain_set = 0
-1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.0576, -8, 3.23746, -8, 3.23746, -3.77703, 8, -3.77703, 8, 3.95689, 3.23746, 3.77703, 3.0576, 8, -3.41732, 8, -3.59717, 3.95689, -8, 3.77703, -8, -3.77703, -3.01418, -4.13724)
+1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:8/0 = 0
 2:8/0/terrain_set = 0
 2:8/0/terrain = 0
-2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.0576, -8, 3.23746, -8, 3.0576, 8, -2.1583, 8, -3.23746, 3.95689, -8, 3.95689, -8, -3.59717, -3.0576, -3.77703)
+2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 2.9483, -8, 2.9483, 8, -2.82546, 8, -2.9483, 4.17676, -8, 4.05392)
 2:8/0/terrains_peering_bit/bottom_side = 0
 2:8/0/terrains_peering_bit/left_side = 0
 3:8/0 = 0
@@ -583,7 +583,7 @@ texture = ExtResource("2_a8run")
 2:9/0 = 0
 2:9/0/terrain_set = 0
 2:9/0/terrain = 0
-2:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.75548, -8, 5.93534, -8, 5.93534, 8, -5.75548, 8)
+2:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.52807, -8, 5.40522, -8, 5.52807, 8, -5.52807, 8)
 2:9/0/terrains_peering_bit/bottom_side = 0
 2:9/0/terrains_peering_bit/top_side = 0
 3:9/0 = 0
@@ -593,7 +593,7 @@ texture = ExtResource("2_a8run")
 0:10/0 = 0
 0:10/0/terrain_set = 0
 0:10/0/terrain = 0
-0:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.0576, -8, 3.23746, -8, 3.0576, -3.59717, 8, -3.95689, 8, -0.719435, 8, 3.95689, 3.23746, 3.77703, 3.23746, 6.1152, -2.87774, 6.1152)
+0:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9483, -8, 2.9483, -8, 2.9483, -3.93107, 8, -3.93107, 8, 5.8966, -2.9483, 6.1423)
 0:10/0/terrains_peering_bit/right_side = 0
 0:10/0/terrains_peering_bit/top_side = 0
 1:10/0 = 0
@@ -778,6 +778,5 @@ tile_map_data = PackedByteArray("AAACAAIAAQAAAAAAAAAEAAYAAwABAAEAAAAFAAEABAAAAAA
 tile_set = SubResource("TileSet_pg34l")
 
 [node name="Player" parent="YSortingContainer" instance=ExtResource("1_hyk8p")]
-z_index = 1
 
 [node name="Camera2D" parent="." instance=ExtResource("3_k2fmo")]

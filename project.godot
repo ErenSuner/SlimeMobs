@@ -14,6 +14,10 @@ config/name="2D Basic Game"
 run/main_scene="uid://df31pvkjssjwi"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[autoload]
+
+PlayerGlobal="*res://scripts/global/player_global.gd"
+
 [display]
 
 window/size/viewport_width=640
