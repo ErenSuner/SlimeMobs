@@ -37,7 +37,6 @@ script = ExtResource("1_v6cli")
 [node name="HealthComponent" parent="." instance=ExtResource("1_jqidj")]
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_1ty4r")]
-max_speed = 60
 
 [node name="DamageDelayTimer" type="Timer" parent="."]
 wait_time = 0.35

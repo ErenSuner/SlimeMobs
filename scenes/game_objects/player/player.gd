@@ -25,6 +25,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if state_machine.current_state.name == "Dead":
+		return
+	
 	check_for_damage()
 	check_for_form_change()
 

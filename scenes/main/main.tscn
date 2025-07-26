@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=4 uid="uid://df31pvkjssjwi"]
+[gd_scene load_steps=25 format=4 uid="uid://df31pvkjssjwi"]
 
+[ext_resource type="PackedScene" uid="uid://c0drb02vj47f3" path="res://scenes/managers/enemy_manager.tscn" id="1_blune"]
 [ext_resource type="PackedScene" uid="uid://cfuoyk6d80t05" path="res://scenes/game_objects/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="Texture2D" uid="uid://blfrrk1e0a6rv" path="res://assets/peaceful_plain_set/peaceful_plains_decors.png" id="2_a8run"]
 [ext_resource type="Texture2D" uid="uid://168yoack3uku" path="res://assets/objects/cactus/Cactus1_1.png" id="2_b1x3f"]
@@ -759,6 +760,9 @@ sources/6 = SubResource("TileSetAtlasSource_a8run")
 
 [node name="Main" type="Node"]
 
+[node name="EnemyManager" parent="." instance=ExtResource("1_blune")]
+basic_enemy_scene = ExtResource("10_ouso4")
+
 [node name="YSortingContainer" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -778,9 +782,13 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAACAAIAAQAAAAAAAAAEAAYAAwABAAEAAAAFAAEABAAAAAAAAAAHAAMAAAAAAAAAAAAIAAcABQAAAAAAAAALAAMABAAAAAAAAAALAAYAAQAAAAAAAAAMAAIAAwABAAEAAAANAAMABAAAAAAAAAAPAAwAAAAAAAAAAAATAAIABQAAAAAAAAAbAAMABQAAAAAAAAAcABIAAwABAAEAAAAeAAMAAQAAAAAAAAAfABQABQAAAAAAAAAgAAIABAAAAAAAAAAhABAABAAAAAAAAAAiAAcABQAAAAAAAAAkABMAAQAAAAAAAAAlAA4AAwABAAEAAAAmAA4ABAAAAAAAAAACAAoABgAAAAUAAAAUABMABgAEAAUAAAAWABEABgAGAAYAAAAcAA8ABgAGAAYAAAAfAA4ABgAGAAYAAAADABAABgAIAAcAAAAPAA8ABgAIAAcAAAAKABIABgAIAAcAAAARABEABgAAAAIAAAALAA4ABgAAAAIAAAAlAAQABgAAAAIAAAAiAAUABgAAAAIAAAAlAAgABgAAAAIAAAAEABMABgAAAAIAAAAXABUABgAAAAIAAAADAAwABgAAAAIAAAAIAAkABgAAAAIAAAAIABAABgAAAAEAAAA=")
 tile_set = SubResource("TileSet_pg34l")
 
-[node name="Player" parent="YSortingContainer" instance=ExtResource("1_hyk8p")]
+[node name="Entities" type="Node2D" parent="YSortingContainer" groups=["entities_layer"]]
+z_index = 1
+y_sort_enabled = true
 
-[node name="BasicEnemy" parent="YSortingContainer" instance=ExtResource("10_ouso4")]
+[node name="Player" parent="YSortingContainer/Entities" instance=ExtResource("1_hyk8p")]
+
+[node name="BasicEnemy" parent="YSortingContainer/Entities" instance=ExtResource("10_ouso4")]
 z_index = 1
 
 [node name="Camera2D" parent="." instance=ExtResource("3_k2fmo")]

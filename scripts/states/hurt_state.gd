@@ -1,6 +1,7 @@
 extends State
 class_name HurtState
 
+
 @onready var move_state: MoveState = %Move
 @onready var health_component: HealthComponent = %HealthComponent
 

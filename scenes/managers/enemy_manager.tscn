@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0drb02vj47f3"]
+
+[ext_resource type="Script" uid="uid://dokmxlxm0m3jg" path="res://scenes/managers/enemy_manager.gd" id="1_tfsap"]
+
+[node name="EnemyManager" type="Node"]
+script = ExtResource("1_tfsap")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
