@@ -2,6 +2,7 @@ extends State
 class_name HurtState
 
 @onready var move_state: MoveState = %Move
+@onready var health_component: HealthComponent = %HealthComponent
 
 func enter(payload: Dictionary = {}) -> void:
 	player.current_state = PlayerGlobal.States.HURT
@@ -34,7 +35,9 @@ func exit() -> void:
 
 func _on_animation_finished():
 	var direction = Input.get_vector("left", "right", "up", "down")
-	if direction != Vector2.ZERO:
+	if health_component.health <= 0:
+		state_machine.transition_to("Dead")
+	elif direction != Vector2.ZERO:
 		state_machine.transition_to("Move")
 	else:
 		state_machine.transition_to("Idle")

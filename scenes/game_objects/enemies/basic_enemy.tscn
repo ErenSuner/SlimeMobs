@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://colod1i75s225"]
+[gd_scene load_steps=11 format=3 uid="uid://colod1i75s225"]
 
 [ext_resource type="PackedScene" uid="uid://deq071tr5xvmn" path="res://scenes/components/health_component.tscn" id="1_jqidj"]
 [ext_resource type="Script" uid="uid://b18ejsvenvsii" path="res://scenes/game_objects/enemies/basic_enemy.gd" id="1_v6cli"]
 [ext_resource type="Texture2D" uid="uid://c0ep24cpxcyx1" path="res://assets/enemies/tile_0084.png" id="2_v6cli"]
+[ext_resource type="PackedScene" uid="uid://cw1wigdupmswp" path="res://scenes/components/velocity_component.tscn" id="3_1ty4r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8suy"]
 bg_color = Color(0.14902, 0.270588, 0.278431, 1)
@@ -25,17 +26,27 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ty4r"]
 radius = 12.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_urtj2"]
+
 [node name="BasicEnemy" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_v6cli")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_jqidj")]
 
+[node name="VelocityComponent" parent="." instance=ExtResource("3_1ty4r")]
+max_speed = 60
+
 [node name="DamageDelayTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.35
 one_shot = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="DamageCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 position = Vector2(0, -8)
 texture = ExtResource("2_v6cli")
 
@@ -51,11 +62,11 @@ value = 50.0
 show_percentage = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -4)
+position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_q32lc")
 
 [node name="HurtBoxArea" type="Area2D" parent="." groups=["hurtbox"]]
+visible = false
 collision_layer = 4
 collision_mask = 0
 
@@ -63,5 +74,15 @@ collision_mask = 0
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_1ty4r")
 
+[node name="HitboxArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_urtj2")
+
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="timeout" from="DamageDelayTimer" to="." method="_on_damage_delay_timer_timeout"]
+[connection signal="timeout" from="DamageCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]

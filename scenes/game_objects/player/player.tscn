@@ -4359,7 +4359,6 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_1ns1k")
 radius = 5.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v2l2k"]
-radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gpa6"]
 size = Vector2(50, 30)
@@ -4370,6 +4369,26 @@ y_sort_enabled = true
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_tuuoe")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("inital_state")]
+script = ExtResource("17_i6po3")
+inital_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("18_7wc5h")
+
+[node name="Move" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("19_lyf0u")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("20_rl6uc")
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("26_n8mxd")
+
+[node name="Dead" type="Node" parent="StateMachine"]
+script = ExtResource("21_d2mjs")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_g8suy")]
 unique_name_in_owner = true
@@ -4402,10 +4421,9 @@ visible = false
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_qwalg")
 
-[node name="HurtBoxArea" type="Area2D" parent="."]
+[node name="HurtBoxArea" type="Area2D" parent="." groups=["hurtbox"]]
 unique_name_in_owner = true
-visible = false
-collision_layer = 0
+collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea"]
@@ -4423,25 +4441,5 @@ process_mode = 4
 visible = false
 position = Vector2(0, -17)
 shape = SubResource("RectangleShape2D_8gpa6")
-
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("inital_state")]
-script = ExtResource("17_i6po3")
-inital_state = NodePath("Idle")
-
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("18_7wc5h")
-
-[node name="Move" type="Node" parent="StateMachine"]
-unique_name_in_owner = true
-script = ExtResource("19_lyf0u")
-
-[node name="Attack" type="Node" parent="StateMachine"]
-script = ExtResource("20_rl6uc")
-
-[node name="Hurt" type="Node" parent="StateMachine"]
-script = ExtResource("26_n8mxd")
-
-[node name="Dead" type="Node" parent="StateMachine"]
-script = ExtResource("21_d2mjs")
 
 [connection signal="area_entered" from="HitBoxArea" to="." method="_on_hit_box_area_area_entered"]
