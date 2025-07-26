@@ -29,7 +29,9 @@ radius = 12.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_urtj2"]
 
 [node name="BasicEnemy" type="CharacterBody2D"]
-z_index = 1
+collision_layer = 16
+collision_mask = 17
+motion_mode = 1
 script = ExtResource("1_v6cli")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_jqidj")]
@@ -45,6 +47,7 @@ one_shot = true
 one_shot = true
 
 [node name="Visuals" type="Node2D" parent="."]
+position = Vector2(0, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 position = Vector2(0, -8)
@@ -52,17 +55,17 @@ texture = ExtResource("2_v6cli")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-z_index = 1
 offset_left = -14.0
-offset_top = -25.0
+offset_top = -21.0
 offset_right = 14.0
-offset_bottom = -19.0
+offset_bottom = -15.0
 theme = SubResource("Theme_v6cli")
 value = 50.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6)
+position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_q32lc")
 
 [node name="HurtBoxArea" type="Area2D" parent="." groups=["hurtbox"]]

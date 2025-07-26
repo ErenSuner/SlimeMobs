@@ -4400,7 +4400,7 @@ script = ExtResource("3_8gpa6")
 one_shot = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -10)
+position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_fe5qn")
 animation = &"slime2_attack_right"
 
@@ -4408,21 +4408,21 @@ animation = &"slime2_attack_right"
 unique_name_in_owner = true
 z_index = 1
 offset_left = -14.0
-offset_top = -28.0
+offset_top = -25.0
 offset_right = 14.0
-offset_bottom = -22.0
+offset_bottom = -19.0
 theme = SubResource("Theme_i6po3")
 value = 100.0
 show_percentage = false
 script = ExtResource("16_1ns1k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -5)
+position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_qwalg")
 
 [node name="HurtBoxArea" type="Area2D" parent="." groups=["hurtbox"]]
 unique_name_in_owner = true
+visible = false
 collision_layer = 2
 collision_mask = 8
 
@@ -4432,13 +4432,13 @@ shape = SubResource("CircleShape2D_v2l2k")
 
 [node name="HitBoxArea" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 collision_layer = 0
 collision_mask = 4
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxArea"]
 process_mode = 4
-visible = false
 position = Vector2(0, -17)
 shape = SubResource("RectangleShape2D_8gpa6")
 

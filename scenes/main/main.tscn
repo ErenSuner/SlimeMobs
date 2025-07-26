@@ -781,5 +781,6 @@ tile_set = SubResource("TileSet_pg34l")
 [node name="Player" parent="YSortingContainer" instance=ExtResource("1_hyk8p")]
 
 [node name="BasicEnemy" parent="YSortingContainer" instance=ExtResource("10_ouso4")]
+z_index = 1
 
 [node name="Camera2D" parent="." instance=ExtResource("3_k2fmo")]
