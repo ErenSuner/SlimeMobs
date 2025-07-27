@@ -68,4 +68,4 @@ func on_damage_cooldown_timer_timeout():
 func _on_hit_box_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("hurtbox"):
 		if area.owner.has_method("take_damage"):
-			area.owner.take_damage(10)
+			area.owner.take_damage(50)

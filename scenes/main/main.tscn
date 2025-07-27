@@ -783,12 +783,8 @@ tile_map_data = PackedByteArray("AAACAAIAAQAAAAAAAAAEAAYAAwABAAEAAAAFAAEABAAAAAA
 tile_set = SubResource("TileSet_pg34l")
 
 [node name="Entities" type="Node2D" parent="YSortingContainer" groups=["entities_layer"]]
-z_index = 1
 y_sort_enabled = true
 
 [node name="Player" parent="YSortingContainer/Entities" instance=ExtResource("1_hyk8p")]
-
-[node name="BasicEnemy" parent="YSortingContainer/Entities" instance=ExtResource("10_ouso4")]
-z_index = 1
 
 [node name="Camera2D" parent="." instance=ExtResource("3_k2fmo")]

@@ -42,7 +42,7 @@ func _handle_damage_dealing() -> void:
 	for area in overlapping_areas:
 		if area.is_in_group("hurtbox"):
 			if area.owner.get_node("HealthComponent").has_method("take_damage"):
-				area.owner.get_node("HealthComponent").take_damage(10)
+				area.owner.get_node("HealthComponent").take_damage(5)
 				can_apply_damage=false
 				damage_cooldown_timer.start()
 
